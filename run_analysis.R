@@ -49,17 +49,18 @@ filtered_std_mean_measures <- filtered_std_mean_measures[ ,-1]
 
 ## 4th Goal: Appropriately labels the data set with descriptive variable names. 
 
-# Remove parenthesis and minus signs
+# Remove parenthesis, dots and minus signs
 names(filtered_std_mean_measures) <- gsub("\\(\\)","",names(filtered_std_mean_measures))
 names(filtered_std_mean_measures) <- gsub("-","",names(filtered_std_mean_measures))
+names(filtered_std_mean_measures) <- gsub("\\.","",names(filtered_std_mean_measures))
 
 # Capital letters for mean and std 
 names(filtered_std_mean_measures) <- gsub("std","Std",names(filtered_std_mean_measures))
 names(filtered_std_mean_measures) <- gsub("mean","Mean",names(filtered_std_mean_measures))
 
 # Identify time a frequency domains
-names(filtered_std_mean_measures) <- gsub('^t',"TimeDomain.",names(filtered_std_mean_measures))
-names(filtered_std_mean_measures) <- gsub('^f',"FrequencyDomain.",names(filtered_std_mean_measures))
+names(filtered_std_mean_measures) <- gsub('^t',"Time",names(filtered_std_mean_measures))
+names(filtered_std_mean_measures) <- gsub('^f',"Frequency",names(filtered_std_mean_measures))
 
 # We should avoid unknown acronymus but also avoiding, if possible, labels too long (we complete some acronymus...)
 names(filtered_std_mean_measures) <- gsub('Acc',"Acceleration",names(filtered_std_mean_measures))
